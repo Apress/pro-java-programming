@@ -1,0 +1,15 @@
+public class Passenger {
+
+    private String name;
+    private TicketType cabinClass;
+
+    public Passenger(String nm, TicketType type) {
+        name = nm;
+        cabinClass = type;
+    }
+
+    public TicketType getCabinClass() {
+        return cabinClass;
+    }
+
+}

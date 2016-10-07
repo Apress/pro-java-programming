@@ -1,0 +1,41 @@
+import java.awt.*;
+import java.awt.event.*;
+import javax.swing.*;
+
+public class ButtonPress extends JFrame {
+
+  public static void main(String[] args) {
+    ButtonPress bp = new ButtonPress();
+    bp.setSize(400, 300);
+    bp.setVisible(true);
+  } 
+
+  public ButtonPress() {
+    JMenuBar jmb = new JMenuBar();
+    JMenu menu = new JMenu("Execute");
+    jmb.add(menu);
+    JMenuItem jmi = new JMenuItem("Database Query");
+    menu.add(jmi);
+    jmi.addActionListener(new ActionListener() {
+      public void actionPerformed(ActionEvent event) {
+        Thread t = new Thread(new Runnable() {
+          public void run() {
+            performDatabaseQuery();
+          } 
+        });
+        t.start();
+      } 
+    });
+    setJMenuBar(jmb);
+  }
+
+  protected void performDatabaseQuery() {
+
+    // Simulate long-running database query
+    try {
+      Thread.sleep(5000);
+    } catch (Exception e) {}
+    ;
+  } 
+
+}
